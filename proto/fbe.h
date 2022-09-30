@@ -44,6 +44,7 @@
 #include <memory_resource>
 #include <utility>
 #include <variant>
+#include "memory/string.hpp"
 
 #if defined(FMT_VERSION)
 #include <fmt/core.h> 
@@ -227,7 +228,7 @@ public:
     pmr_buffer_t() = default;
     explicit pmr_buffer_t(allocator_type alloc): _data(alloc) {}
     explicit pmr_buffer_t(size_t capacity) { reserve(capacity); }
-    explicit pmr_buffer_t(const std::pmr::string& str) { assign(str); }
+    explicit pmr_buffer_t(const stdb::memory::string& str) { assign(str); }
     pmr_buffer_t(size_t size, uint8_t value) { assign(size, value); }
     pmr_buffer_t(const uint8_t* data, size_t size) { assign(data, size); }
     explicit pmr_buffer_t(const std::pmr::vector<uint8_t>& other) : _data(other) {}
@@ -236,7 +237,7 @@ public:
     explicit pmr_buffer_t(pmr_buffer_t&& other) = default;
     ~pmr_buffer_t() = default;
 
-    pmr_buffer_t& operator=(const std::pmr::string& str) { assign(str); return *this; }
+    pmr_buffer_t& operator=(const stdb::memory::string& str) { assign(str); return *this; }
     pmr_buffer_t& operator=(const std::pmr::vector<uint8_t>& other) { _data = other; return *this; }
     pmr_buffer_t& operator=(std::pmr::vector<uint8_t>&& other) { _data = std::move(other); return *this; }
     pmr_buffer_t& operator=(const pmr_buffer_t& other) = default;
@@ -265,14 +266,14 @@ public:
     void resize(size_t size, uint8_t value = 0) { _data.resize(size, value); }
     void shrink_to_fit() { _data.shrink_to_fit(); }
 
-    void assign(const std::pmr::string& str) { assign((const uint8_t*)str.c_str(), str.size()); }
+    void assign(const stdb::memory::string& str) { assign((const uint8_t*)str.c_str(), str.size()); }
     void assign(const std::pmr::vector<uint8_t>& vec) { assign(vec.begin(), vec.end()); }
     void assign(size_t size, uint8_t value) { _data.assign(size, value); }
     void assign(const uint8_t* data, size_t size) { _data.assign(data, data + size); }
     template <class InputIterator>
     void assign(InputIterator first, InputIterator last) { _data.assign(first, last); }
     iterator insert(const_iterator position, uint8_t value) { return _data.insert(position, value); }
-    iterator insert(const_iterator position, const std::pmr::string& str) { return insert(position, (const uint8_t*)str.c_str(), str.size()); }
+    iterator insert(const_iterator position, const stdb::memory::string& str) { return insert(position, (const uint8_t*)str.c_str(), str.size()); }
     iterator insert(const_iterator position, const std::pmr::vector<uint8_t>& vec) { return insert(position, vec.begin(), vec.end()); }
     iterator insert(const_iterator position, size_t size, uint8_t value) { return _data.insert(position, size, value); }
     iterator insert(const_iterator position, const uint8_t* data, size_t size) { return _data.insert(position, data, data + size); }

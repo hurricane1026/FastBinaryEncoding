@@ -51,7 +51,7 @@ size_t FinalModel<::variants::Simple>::get(::variants::Simple& fbe_value) const 
     return fbe_result;
 }
 
-size_t FinalModel<::variants::Simple>::get_fields(::variants::Simple& fbe_value) const noexcept
+size_t FinalModel<::variants::Simple>::get_fields([[maybe_unused]] ::variants::Simple& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -73,7 +73,7 @@ size_t FinalModel<::variants::Simple>::set(const ::variants::Simple& fbe_value) 
     return fbe_result;
 }
 
-size_t FinalModel<::variants::Simple>::set_fields(const ::variants::Simple& fbe_value) noexcept
+size_t FinalModel<::variants::Simple>::set_fields([[maybe_unused]] const ::variants::Simple& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -181,7 +181,7 @@ size_t FinalModel<::variants::Value>::get(::variants::Value& fbe_value) const no
     return fbe_result;
 }
 
-size_t FinalModel<::variants::Value>::get_fields(::variants::Value& fbe_value) const noexcept
+size_t FinalModel<::variants::Value>::get_fields([[maybe_unused]] ::variants::Value& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -203,7 +203,7 @@ size_t FinalModel<::variants::Value>::set(const ::variants::Value& fbe_value) no
     return fbe_result;
 }
 
-size_t FinalModel<::variants::Value>::set_fields(const ::variants::Value& fbe_value) noexcept
+size_t FinalModel<::variants::Value>::set_fields([[maybe_unused]] const ::variants::Value& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;

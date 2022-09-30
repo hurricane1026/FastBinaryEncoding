@@ -314,7 +314,7 @@ private:
     size_t _offset;
 
 public:
-    FieldModel<std::string> name;
+    FieldModel<stdb::memory::string> name;
 };
 
 namespace variants_ptr {

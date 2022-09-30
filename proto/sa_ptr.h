@@ -68,15 +68,15 @@ CppLogging::Record& operator<<(CppLogging::Record& record, MyFLags value);
 
 struct Extra : FBE::Base
 {
-    std::string name;
-    std::string detail;
+    stdb::memory::string name;
+    stdb::memory::string detail;
     ::sa::Sex sex;
     ::sa::MyFLags flag;
 
     size_t fbe_type() const noexcept { return 1; }
 
     Extra();
-    Extra(const std::string& arg_name, const std::string& arg_detail, ::sa::Sex&& arg_sex, ::sa::MyFLags&& arg_flag);
+    Extra(const stdb::memory::string& arg_name, const stdb::memory::string& arg_detail, ::sa::Sex&& arg_sex, ::sa::MyFLags&& arg_flag);
     Extra(const Extra& other) = delete;
     Extra(Extra&& other) noexcept;
     ~Extra() override;
@@ -118,7 +118,7 @@ namespace sa {
 
 struct Simple : FBE::Base
 {
-    std::string name;
+    stdb::memory::string name;
     int32_t depth;
     std::array<::sa::Extra, 1> sa;
     ::sa::Sex sex;
@@ -126,7 +126,7 @@ struct Simple : FBE::Base
     size_t fbe_type() const noexcept { return 2; }
 
     Simple();
-    Simple(const std::string& arg_name, int32_t arg_depth, std::array<::sa::Extra, 1> arg_sa, ::sa::Sex&& arg_sex);
+    Simple(const stdb::memory::string& arg_name, int32_t arg_depth, std::array<::sa::Extra, 1> arg_sa, ::sa::Sex&& arg_sex);
     Simple(const Simple& other) = delete;
     Simple(Simple&& other) noexcept;
     ~Simple() override;
@@ -168,7 +168,7 @@ namespace sa {
 
 struct Complex : FBE::Base
 {
-    std::string name;
+    stdb::memory::string name;
     std::optional<::sa::Sex> sex;
     std::optional<::sa::MyFLags> flag;
     std::optional<::sa::Extra> extra;
@@ -177,7 +177,7 @@ struct Complex : FBE::Base
     size_t fbe_type() const noexcept { return 3; }
 
     Complex();
-    Complex(const std::string& arg_name, std::optional<::sa::Sex> arg_sex, std::optional<::sa::MyFLags> arg_flag, std::optional<::sa::Extra> arg_extra, std::vector<int64_t> arg_nums);
+    Complex(const stdb::memory::string& arg_name, std::optional<::sa::Sex> arg_sex, std::optional<::sa::MyFLags> arg_flag, std::optional<::sa::Extra> arg_extra, std::vector<int64_t> arg_nums);
     Complex(const Complex& other) = delete;
     Complex(Complex&& other) noexcept;
     ~Complex() override;

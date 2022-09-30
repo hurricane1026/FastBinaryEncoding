@@ -90,7 +90,7 @@ CppLogging::Record& operator<<(CppLogging::Record& record, State value);
 struct Order
 {
     int32_t id;
-    std::string symbol;
+    stdb::memory::string symbol;
     ::proto::OrderSide side;
     ::proto::OrderType type;
     double price;
@@ -99,7 +99,7 @@ struct Order
     size_t fbe_type() const noexcept { return 1; }
 
     Order();
-    Order(int32_t arg_id, const std::string& arg_symbol, const ::proto::OrderSide& arg_side, const ::proto::OrderType& arg_type, double arg_price, double arg_volume);
+    Order(int32_t arg_id, const stdb::memory::string& arg_symbol, const ::proto::OrderSide& arg_side, const ::proto::OrderType& arg_type, double arg_price, double arg_volume);
     Order(const Order& other) = default;
     Order(Order&& other) = default;
     ~Order() = default;
@@ -146,13 +146,13 @@ namespace proto {
 
 struct Balance
 {
-    std::string currency;
+    stdb::memory::string currency;
     double amount;
 
     size_t fbe_type() const noexcept { return 2; }
 
     Balance();
-    Balance(const std::string& arg_currency, double arg_amount);
+    Balance(const stdb::memory::string& arg_currency, double arg_amount);
     Balance(const Balance& other) = default;
     Balance(Balance&& other) = default;
     ~Balance() = default;
@@ -200,7 +200,7 @@ namespace proto {
 struct Account
 {
     int32_t id;
-    std::string name;
+    stdb::memory::string name;
     ::proto::State state;
     ::proto::Balance wallet;
     std::optional<::proto::Balance> asset;
@@ -209,7 +209,7 @@ struct Account
     size_t fbe_type() const noexcept { return 3; }
 
     Account();
-    Account(int32_t arg_id, const std::string& arg_name, const ::proto::State& arg_state, const ::proto::Balance& arg_wallet, const std::optional<::proto::Balance>& arg_asset, const std::vector<::proto::Order>& arg_orders);
+    Account(int32_t arg_id, const stdb::memory::string& arg_name, const ::proto::State& arg_state, const ::proto::Balance& arg_wallet, const std::optional<::proto::Balance>& arg_asset, const std::vector<::proto::Order>& arg_orders);
     Account(const Account& other) = default;
     Account(Account&& other) = default;
     ~Account() = default;

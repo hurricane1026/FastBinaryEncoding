@@ -107,7 +107,7 @@ size_t FinalModel<::protoex::Order>::get(::protoex::Order& fbe_value) const noex
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Order>::get_fields(::protoex::Order& fbe_value) const noexcept
+size_t FinalModel<::protoex::Order>::get_fields([[maybe_unused]] ::protoex::Order& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -164,7 +164,7 @@ size_t FinalModel<::protoex::Order>::set(const ::protoex::Order& fbe_value) noex
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Order>::set_fields(const ::protoex::Order& fbe_value) noexcept
+size_t FinalModel<::protoex::Order>::set_fields([[maybe_unused]] const ::protoex::Order& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -315,7 +315,7 @@ size_t FinalModel<::protoex::Balance>::get(::protoex::Balance& fbe_value) const 
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Balance>::get_fields(::protoex::Balance& fbe_value) const noexcept
+size_t FinalModel<::protoex::Balance>::get_fields([[maybe_unused]] ::protoex::Balance& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -342,7 +342,7 @@ size_t FinalModel<::protoex::Balance>::set(const ::protoex::Balance& fbe_value) 
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Balance>::set_fields(const ::protoex::Balance& fbe_value) noexcept
+size_t FinalModel<::protoex::Balance>::set_fields([[maybe_unused]] const ::protoex::Balance& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -495,7 +495,7 @@ size_t FinalModel<::protoex::Account>::get(::protoex::Account& fbe_value) const 
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Account>::get_fields(::protoex::Account& fbe_value) const noexcept
+size_t FinalModel<::protoex::Account>::get_fields([[maybe_unused]] ::protoex::Account& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -542,7 +542,7 @@ size_t FinalModel<::protoex::Account>::set(const ::protoex::Account& fbe_value) 
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::Account>::set_fields(const ::protoex::Account& fbe_value) noexcept
+size_t FinalModel<::protoex::Account>::set_fields([[maybe_unused]] const ::protoex::Account& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -675,7 +675,7 @@ size_t FinalModel<::protoex::OrderMessage>::get(::protoex::OrderMessage& fbe_val
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::OrderMessage>::get_fields(::protoex::OrderMessage& fbe_value) const noexcept
+size_t FinalModel<::protoex::OrderMessage>::get_fields([[maybe_unused]] ::protoex::OrderMessage& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -697,7 +697,7 @@ size_t FinalModel<::protoex::OrderMessage>::set(const ::protoex::OrderMessage& f
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::OrderMessage>::set_fields(const ::protoex::OrderMessage& fbe_value) noexcept
+size_t FinalModel<::protoex::OrderMessage>::set_fields([[maybe_unused]] const ::protoex::OrderMessage& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -805,7 +805,7 @@ size_t FinalModel<::protoex::BalanceMessage>::get(::protoex::BalanceMessage& fbe
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::BalanceMessage>::get_fields(::protoex::BalanceMessage& fbe_value) const noexcept
+size_t FinalModel<::protoex::BalanceMessage>::get_fields([[maybe_unused]] ::protoex::BalanceMessage& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -827,7 +827,7 @@ size_t FinalModel<::protoex::BalanceMessage>::set(const ::protoex::BalanceMessag
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::BalanceMessage>::set_fields(const ::protoex::BalanceMessage& fbe_value) noexcept
+size_t FinalModel<::protoex::BalanceMessage>::set_fields([[maybe_unused]] const ::protoex::BalanceMessage& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -935,7 +935,7 @@ size_t FinalModel<::protoex::AccountMessage>::get(::protoex::AccountMessage& fbe
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::AccountMessage>::get_fields(::protoex::AccountMessage& fbe_value) const noexcept
+size_t FinalModel<::protoex::AccountMessage>::get_fields([[maybe_unused]] ::protoex::AccountMessage& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -957,7 +957,7 @@ size_t FinalModel<::protoex::AccountMessage>::set(const ::protoex::AccountMessag
     return fbe_result;
 }
 
-size_t FinalModel<::protoex::AccountMessage>::set_fields(const ::protoex::AccountMessage& fbe_value) noexcept
+size_t FinalModel<::protoex::AccountMessage>::set_fields([[maybe_unused]] const ::protoex::AccountMessage& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;

@@ -74,7 +74,7 @@ Order::Order()
     , volume((double)0.0)
 {}
 
-Order::Order(int32_t arg_id, const std::string& arg_symbol, const ::proto::OrderSide& arg_side, const ::proto::OrderType& arg_type, double arg_price, double arg_volume)
+Order::Order(int32_t arg_id, const stdb::memory::string& arg_symbol, const ::proto::OrderSide& arg_side, const ::proto::OrderType& arg_type, double arg_price, double arg_volume)
     : id(arg_id)
     , symbol(arg_symbol)
     , side(arg_side)
@@ -133,7 +133,7 @@ Balance::Balance()
     , amount((double)0.0)
 {}
 
-Balance::Balance(const std::string& arg_currency, double arg_amount)
+Balance::Balance(const stdb::memory::string& arg_currency, double arg_amount)
     : currency(arg_currency)
     , amount(arg_amount)
 {}
@@ -184,7 +184,7 @@ Account::Account()
     , orders()
 {}
 
-Account::Account(int32_t arg_id, const std::string& arg_name, const ::proto::State& arg_state, const ::proto::Balance& arg_wallet, const std::optional<::proto::Balance>& arg_asset, const std::vector<::proto::Order>& arg_orders)
+Account::Account(int32_t arg_id, const stdb::memory::string& arg_name, const ::proto::State& arg_state, const ::proto::Balance& arg_wallet, const std::optional<::proto::Balance>& arg_asset, const std::vector<::proto::Order>& arg_orders)
     : id(arg_id)
     , name(arg_name)
     , state(arg_state)

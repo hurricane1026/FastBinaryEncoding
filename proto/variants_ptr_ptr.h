@@ -37,20 +37,20 @@ struct Simple;
 struct Value;
 struct ValueContainer;
 
-using Expr = std::variant<bool, std::string, int32_t>;
+using Expr = std::variant<bool, stdb::memory::string, int32_t>;
 std::ostream& operator<<(std::ostream& stream, [[maybe_unused]] const Expr& value);
 
-using V = std::variant<int32_t, std::string, double, ::variants_ptr::Simple, ::variants_ptr::Simple*, std::vector<::variants_ptr::Simple>, std::vector<int32_t>, std::unordered_map<int32_t, ::variants_ptr::Simple>, std::vector<FBE::buffer_t>, std::vector<std::string>, std::unordered_map<int32_t, FBE::buffer_t>, std::unordered_map<std::string, FBE::buffer_t>, std::vector<::variants_ptr::Simple*>, ::variants_ptr::Expr>;
+using V = std::variant<int32_t, stdb::memory::string, double, ::variants_ptr::Simple, ::variants_ptr::Simple*, std::vector<::variants_ptr::Simple>, std::vector<int32_t>, std::unordered_map<int32_t, ::variants_ptr::Simple>, std::vector<FBE::buffer_t>, std::vector<stdb::memory::string>, std::unordered_map<int32_t, FBE::buffer_t>, std::unordered_map<stdb::memory::string, FBE::buffer_t>, std::vector<::variants_ptr::Simple*>, ::variants_ptr::Expr>;
 std::ostream& operator<<(std::ostream& stream, [[maybe_unused]] const V& value);
 
 struct Simple : FBE::Base
 {
-    std::string name;
+    stdb::memory::string name;
 
     size_t fbe_type() const noexcept { return 1; }
 
     Simple();
-    explicit Simple(const std::string& arg_name);
+    explicit Simple(const stdb::memory::string& arg_name);
     Simple(const Simple& other) = delete;
     Simple(Simple&& other) noexcept;
     ~Simple() override;

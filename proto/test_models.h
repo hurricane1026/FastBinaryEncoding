@@ -159,8 +159,8 @@ public:
     FieldModel<double> f28;
     FieldModel<FBE::decimal_t> f29;
     FieldModel<FBE::decimal_t> f30;
-    FieldModel<std::string> f31;
-    FieldModel<std::string> f32;
+    FieldModel<stdb::memory::string> f31;
+    FieldModel<stdb::memory::string> f32;
     FieldModel<uint64_t> f33;
     FieldModel<uint64_t> f34;
     FieldModel<uint64_t> f35;
@@ -310,9 +310,9 @@ public:
     FieldModel<std::optional<FBE::decimal_t>> f142;
     FieldModel<std::optional<FBE::decimal_t>> f143;
     FieldModel<std::optional<FBE::decimal_t>> f144;
-    FieldModel<std::optional<std::string>> f145;
-    FieldModel<std::optional<std::string>> f146;
-    FieldModel<std::optional<std::string>> f147;
+    FieldModel<std::optional<stdb::memory::string>> f145;
+    FieldModel<std::optional<stdb::memory::string>> f146;
+    FieldModel<std::optional<stdb::memory::string>> f147;
     FieldModel<std::optional<uint64_t>> f148;
     FieldModel<std::optional<uint64_t>> f149;
     FieldModel<std::optional<uint64_t>> f150;
@@ -1119,16 +1119,16 @@ private:
     size_t _offset;
 
 public:
-    FieldModelMap<std::string, uint8_t> f1;
-    FieldModelMap<std::string, std::optional<uint8_t>> f2;
-    FieldModelMap<std::string, FBE::buffer_t> f3;
-    FieldModelMap<std::string, std::optional<FBE::buffer_t>> f4;
-    FieldModelMap<std::string, ::test::EnumSimple> f5;
-    FieldModelMap<std::string, std::optional<::test::EnumSimple>> f6;
-    FieldModelMap<std::string, ::test::FlagsSimple> f7;
-    FieldModelMap<std::string, std::optional<::test::FlagsSimple>> f8;
-    FieldModelMap<std::string, ::test::StructSimple> f9;
-    FieldModelMap<std::string, std::optional<::test::StructSimple>> f10;
+    FieldModelMap<stdb::memory::string, uint8_t> f1;
+    FieldModelMap<stdb::memory::string, std::optional<uint8_t>> f2;
+    FieldModelMap<stdb::memory::string, FBE::buffer_t> f3;
+    FieldModelMap<stdb::memory::string, std::optional<FBE::buffer_t>> f4;
+    FieldModelMap<stdb::memory::string, ::test::EnumSimple> f5;
+    FieldModelMap<stdb::memory::string, std::optional<::test::EnumSimple>> f6;
+    FieldModelMap<stdb::memory::string, ::test::FlagsSimple> f7;
+    FieldModelMap<stdb::memory::string, std::optional<::test::FlagsSimple>> f8;
+    FieldModelMap<stdb::memory::string, ::test::StructSimple> f9;
+    FieldModelMap<stdb::memory::string, std::optional<::test::StructSimple>> f10;
 };
 
 namespace test {

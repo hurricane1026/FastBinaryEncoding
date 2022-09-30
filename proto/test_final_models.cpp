@@ -403,7 +403,7 @@ size_t FinalModel<::test::StructSimple>::get(::test::StructSimple& fbe_value) co
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructSimple>::get_fields(::test::StructSimple& fbe_value) const noexcept
+size_t FinalModel<::test::StructSimple>::get_fields([[maybe_unused]] ::test::StructSimple& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -645,7 +645,7 @@ size_t FinalModel<::test::StructSimple>::set(const ::test::StructSimple& fbe_val
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructSimple>::set_fields(const ::test::StructSimple& fbe_value) noexcept
+size_t FinalModel<::test::StructSimple>::set_fields([[maybe_unused]] const ::test::StructSimple& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -1501,7 +1501,7 @@ size_t FinalModel<::test::StructOptional>::get(::test::StructOptional& fbe_value
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructOptional>::get_fields(::test::StructOptional& fbe_value) const noexcept
+size_t FinalModel<::test::StructOptional>::get_fields([[maybe_unused]] ::test::StructOptional& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -1853,7 +1853,7 @@ size_t FinalModel<::test::StructOptional>::set(const ::test::StructOptional& fbe
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructOptional>::set_fields(const ::test::StructOptional& fbe_value) noexcept
+size_t FinalModel<::test::StructOptional>::set_fields([[maybe_unused]] const ::test::StructOptional& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2387,7 +2387,7 @@ size_t FinalModel<::test::StructNested>::get(::test::StructNested& fbe_value) co
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructNested>::get_fields(::test::StructNested& fbe_value) const noexcept
+size_t FinalModel<::test::StructNested>::get_fields([[maybe_unused]] ::test::StructNested& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2469,7 +2469,7 @@ size_t FinalModel<::test::StructNested>::set(const ::test::StructNested& fbe_val
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructNested>::set_fields(const ::test::StructNested& fbe_value) noexcept
+size_t FinalModel<::test::StructNested>::set_fields([[maybe_unused]] const ::test::StructNested& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2653,7 +2653,7 @@ size_t FinalModel<::test::StructBytes>::get(::test::StructBytes& fbe_value) cons
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructBytes>::get_fields(::test::StructBytes& fbe_value) const noexcept
+size_t FinalModel<::test::StructBytes>::get_fields([[maybe_unused]] ::test::StructBytes& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2685,7 +2685,7 @@ size_t FinalModel<::test::StructBytes>::set(const ::test::StructBytes& fbe_value
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructBytes>::set_fields(const ::test::StructBytes& fbe_value) noexcept
+size_t FinalModel<::test::StructBytes>::set_fields([[maybe_unused]] const ::test::StructBytes& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2875,7 +2875,7 @@ size_t FinalModel<::test::StructArray>::get(::test::StructArray& fbe_value) cons
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructArray>::get_fields(::test::StructArray& fbe_value) const noexcept
+size_t FinalModel<::test::StructArray>::get_fields([[maybe_unused]] ::test::StructArray& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -2942,7 +2942,7 @@ size_t FinalModel<::test::StructArray>::set(const ::test::StructArray& fbe_value
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructArray>::set_fields(const ::test::StructArray& fbe_value) noexcept
+size_t FinalModel<::test::StructArray>::set_fields([[maybe_unused]] const ::test::StructArray& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3167,7 +3167,7 @@ size_t FinalModel<::test::StructVector>::get(::test::StructVector& fbe_value) co
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructVector>::get_fields(::test::StructVector& fbe_value) const noexcept
+size_t FinalModel<::test::StructVector>::get_fields([[maybe_unused]] ::test::StructVector& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3234,7 +3234,7 @@ size_t FinalModel<::test::StructVector>::set(const ::test::StructVector& fbe_val
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructVector>::set_fields(const ::test::StructVector& fbe_value) noexcept
+size_t FinalModel<::test::StructVector>::set_fields([[maybe_unused]] const ::test::StructVector& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3459,7 +3459,7 @@ size_t FinalModel<::test::StructList>::get(::test::StructList& fbe_value) const 
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructList>::get_fields(::test::StructList& fbe_value) const noexcept
+size_t FinalModel<::test::StructList>::get_fields([[maybe_unused]] ::test::StructList& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3526,7 +3526,7 @@ size_t FinalModel<::test::StructList>::set(const ::test::StructList& fbe_value) 
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructList>::set_fields(const ::test::StructList& fbe_value) noexcept
+size_t FinalModel<::test::StructList>::set_fields([[maybe_unused]] const ::test::StructList& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3703,7 +3703,7 @@ size_t FinalModel<::test::StructSet>::get(::test::StructSet& fbe_value) const no
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructSet>::get_fields(::test::StructSet& fbe_value) const noexcept
+size_t FinalModel<::test::StructSet>::get_fields([[maybe_unused]] ::test::StructSet& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3740,7 +3740,7 @@ size_t FinalModel<::test::StructSet>::set(const ::test::StructSet& fbe_value) no
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructSet>::set_fields(const ::test::StructSet& fbe_value) noexcept
+size_t FinalModel<::test::StructSet>::set_fields([[maybe_unused]] const ::test::StructSet& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -3935,7 +3935,7 @@ size_t FinalModel<::test::StructMap>::get(::test::StructMap& fbe_value) const no
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructMap>::get_fields(::test::StructMap& fbe_value) const noexcept
+size_t FinalModel<::test::StructMap>::get_fields([[maybe_unused]] ::test::StructMap& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4002,7 +4002,7 @@ size_t FinalModel<::test::StructMap>::set(const ::test::StructMap& fbe_value) no
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructMap>::set_fields(const ::test::StructMap& fbe_value) noexcept
+size_t FinalModel<::test::StructMap>::set_fields([[maybe_unused]] const ::test::StructMap& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4227,7 +4227,7 @@ size_t FinalModel<::test::StructHash>::get(::test::StructHash& fbe_value) const 
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructHash>::get_fields(::test::StructHash& fbe_value) const noexcept
+size_t FinalModel<::test::StructHash>::get_fields([[maybe_unused]] ::test::StructHash& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4294,7 +4294,7 @@ size_t FinalModel<::test::StructHash>::set(const ::test::StructHash& fbe_value) 
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructHash>::set_fields(const ::test::StructHash& fbe_value) noexcept
+size_t FinalModel<::test::StructHash>::set_fields([[maybe_unused]] const ::test::StructHash& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4455,7 +4455,7 @@ size_t FinalModel<::test::StructHashEx>::get(::test::StructHashEx& fbe_value) co
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructHashEx>::get_fields(::test::StructHashEx& fbe_value) const noexcept
+size_t FinalModel<::test::StructHashEx>::get_fields([[maybe_unused]] ::test::StructHashEx& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4482,7 +4482,7 @@ size_t FinalModel<::test::StructHashEx>::set(const ::test::StructHashEx& fbe_val
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructHashEx>::set_fields(const ::test::StructHashEx& fbe_value) noexcept
+size_t FinalModel<::test::StructHashEx>::set_fields([[maybe_unused]] const ::test::StructHashEx& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -4584,7 +4584,7 @@ size_t FinalModel<::test::StructEmpty>::get(::test::StructEmpty& fbe_value) cons
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructEmpty>::get_fields(::test::StructEmpty& fbe_value) const noexcept
+size_t FinalModel<::test::StructEmpty>::get_fields([[maybe_unused]] ::test::StructEmpty& fbe_value) const noexcept
 {
     return 0;
 }
@@ -4597,7 +4597,7 @@ size_t FinalModel<::test::StructEmpty>::set(const ::test::StructEmpty& fbe_value
     return fbe_result;
 }
 
-size_t FinalModel<::test::StructEmpty>::set_fields(const ::test::StructEmpty& fbe_value) noexcept
+size_t FinalModel<::test::StructEmpty>::set_fields([[maybe_unused]] const ::test::StructEmpty& fbe_value) noexcept
 {
     return 0;
 }

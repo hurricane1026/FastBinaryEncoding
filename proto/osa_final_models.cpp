@@ -75,7 +75,7 @@ size_t FinalModel<::osa::Extra>::get(::osa::Extra& fbe_value) const noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::osa::Extra>::get_fields(::osa::Extra& fbe_value) const noexcept
+size_t FinalModel<::osa::Extra>::get_fields([[maybe_unused]] ::osa::Extra& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -112,7 +112,7 @@ size_t FinalModel<::osa::Extra>::set(const ::osa::Extra& fbe_value) noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::osa::Extra>::set_fields(const ::osa::Extra& fbe_value) noexcept
+size_t FinalModel<::osa::Extra>::set_fields([[maybe_unused]] const ::osa::Extra& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -259,7 +259,7 @@ size_t FinalModel<::osa::Simple>::get(::osa::Simple& fbe_value) const noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::osa::Simple>::get_fields(::osa::Simple& fbe_value) const noexcept
+size_t FinalModel<::osa::Simple>::get_fields([[maybe_unused]] ::osa::Simple& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -296,7 +296,7 @@ size_t FinalModel<::osa::Simple>::set(const ::osa::Simple& fbe_value) noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::osa::Simple>::set_fields(const ::osa::Simple& fbe_value) noexcept
+size_t FinalModel<::osa::Simple>::set_fields([[maybe_unused]] const ::osa::Simple& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;

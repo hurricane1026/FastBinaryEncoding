@@ -35,7 +35,7 @@ namespace simple {
 
 struct Simple : FBE::Base
 {
-    std::string info;
+    stdb::memory::string info;
     ::simple::Simple* simple;
     int32_t depth;
     std::vector<::simple::Simple*> spv;
@@ -46,7 +46,7 @@ struct Simple : FBE::Base
     size_t fbe_type() const noexcept { return 1; }
 
     Simple();
-    Simple(const std::string& arg_info, std::unique_ptr<::simple::Simple> arg_simple, int32_t arg_depth, std::vector<std::unique_ptr<::simple::Simple>> arg_spv, std::vector<::simple::Simple> arg_sv, std::map<int32_t, std::unique_ptr<::simple::Simple>> arg_spm, std::map<int32_t, ::simple::Simple> arg_sm);
+    Simple(const stdb::memory::string& arg_info, std::unique_ptr<::simple::Simple> arg_simple, int32_t arg_depth, std::vector<std::unique_ptr<::simple::Simple>> arg_spv, std::vector<::simple::Simple> arg_sv, std::map<int32_t, std::unique_ptr<::simple::Simple>> arg_spm, std::map<int32_t, ::simple::Simple> arg_sm);
     Simple(const Simple& other) = delete;
     Simple(Simple&& other) noexcept;
     ~Simple() override;

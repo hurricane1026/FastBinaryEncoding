@@ -571,7 +571,7 @@ size_t FinalModel<::enums::Enums>::get(::enums::Enums& fbe_value) const noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::enums::Enums>::get_fields(::enums::Enums& fbe_value) const noexcept
+size_t FinalModel<::enums::Enums>::get_fields([[maybe_unused]] ::enums::Enums& fbe_value) const noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;
@@ -918,7 +918,7 @@ size_t FinalModel<::enums::Enums>::set(const ::enums::Enums& fbe_value) noexcept
     return fbe_result;
 }
 
-size_t FinalModel<::enums::Enums>::set_fields(const ::enums::Enums& fbe_value) noexcept
+size_t FinalModel<::enums::Enums>::set_fields([[maybe_unused]] const ::enums::Enums& fbe_value) noexcept
 {
     size_t fbe_current_offset = 0;
     size_t fbe_current_size = 0;

@@ -34,20 +34,20 @@ namespace variants {
 struct Simple;
 struct Value;
 
-using Expr = std::variant<bool, int32_t, std::string>;
+using Expr = std::variant<bool, int32_t, stdb::memory::string>;
 std::ostream& operator<<(std::ostream& stream, [[maybe_unused]] const Expr& value);
 
-using V = std::variant<std::string, int32_t, double, ::variants::Simple, std::vector<::variants::Simple>, std::vector<int32_t>, std::unordered_map<int32_t, ::variants::Simple>, std::vector<FBE::buffer_t>, std::vector<std::string>, std::unordered_map<int32_t, FBE::buffer_t>, std::unordered_map<std::string, FBE::buffer_t>, ::variants::Expr>;
+using V = std::variant<stdb::memory::string, int32_t, double, ::variants::Simple, std::vector<::variants::Simple>, std::vector<int32_t>, std::unordered_map<int32_t, ::variants::Simple>, std::vector<FBE::buffer_t>, std::vector<stdb::memory::string>, std::unordered_map<int32_t, FBE::buffer_t>, std::unordered_map<stdb::memory::string, FBE::buffer_t>, ::variants::Expr>;
 std::ostream& operator<<(std::ostream& stream, [[maybe_unused]] const V& value);
 
 struct Simple
 {
-    std::string name;
+    stdb::memory::string name;
 
     size_t fbe_type() const noexcept { return 1; }
 
     Simple();
-    explicit Simple(const std::string& arg_name);
+    explicit Simple(const stdb::memory::string& arg_name);
     Simple(const Simple& other) = default;
     Simple(Simple&& other) = default;
     ~Simple() = default;

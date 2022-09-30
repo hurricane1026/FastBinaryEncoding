@@ -91,7 +91,7 @@ private:
 
 public:
     FinalModel<int32_t> id;
-    FinalModel<std::string> symbol;
+    FinalModel<stdb::memory::string> symbol;
     FinalModel<::proto::OrderSide> side;
     FinalModel<::proto::OrderType> type;
     FinalModel<double> price;
@@ -168,7 +168,7 @@ private:
     mutable size_t _offset;
 
 public:
-    FinalModel<std::string> currency;
+    FinalModel<stdb::memory::string> currency;
     FinalModel<double> amount;
 };
 
@@ -243,7 +243,7 @@ private:
 
 public:
     FinalModel<int32_t> id;
-    FinalModel<std::string> name;
+    FinalModel<stdb::memory::string> name;
     FinalModel<::proto::State> state;
     FinalModel<::proto::Balance> wallet;
     FinalModel<std::optional<::proto::Balance>> asset;

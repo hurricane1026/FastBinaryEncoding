@@ -31,7 +31,7 @@ Extra::Extra()
     , flag()
 {}
 
-Extra::Extra(const std::string& arg_name, const std::string& arg_detail, const ::osa::Sex& arg_sex, const ::osa::MyFLags& arg_flag)
+Extra::Extra(const stdb::memory::string& arg_name, const stdb::memory::string& arg_detail, const ::osa::Sex& arg_sex, const ::osa::MyFLags& arg_flag)
     : name(arg_name)
     , detail(arg_detail)
     , sex(arg_sex)
@@ -82,7 +82,7 @@ Simple::Simple()
     , sex()
 {}
 
-Simple::Simple(const std::string& arg_name, int32_t arg_depth, const std::array<::osa::Extra, 1>& arg_sa, const ::osa::Sex& arg_sex)
+Simple::Simple(const stdb::memory::string& arg_name, int32_t arg_depth, const std::array<::osa::Extra, 1>& arg_sa, const ::osa::Sex& arg_sex)
     : name(arg_name)
     , depth(arg_depth)
     , sa(arg_sa)

@@ -66,7 +66,7 @@ private:
     mutable size_t _offset;
 
 public:
-    FinalModel<std::string> name;
+    FinalModel<stdb::memory::string> name;
 };
 
 namespace variants {

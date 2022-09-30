@@ -241,7 +241,7 @@ private:
 public:
     FieldModel<::variants::V> v;
     FieldModelVector<::variants::V> vv;
-    FieldModelMap<std::string, ::variants::V> vm;
+    FieldModelMap<stdb::memory::string, ::variants::V> vm;
     FieldModel<std::optional<::variants::V>> vo;
 };
 

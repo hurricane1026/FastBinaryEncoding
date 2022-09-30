@@ -103,7 +103,7 @@ private:
 
 public:
     FieldModel<int32_t> id;
-    FieldModel<std::string> symbol;
+    FieldModel<stdb::memory::string> symbol;
     FieldModel<::proto::OrderSide> side;
     FieldModel<::proto::OrderType> type;
     FieldModel<double> price;
@@ -199,7 +199,7 @@ private:
     size_t _offset;
 
 public:
-    FieldModel<std::string> currency;
+    FieldModel<stdb::memory::string> currency;
     FieldModel<double> amount;
 };
 
@@ -293,7 +293,7 @@ private:
 
 public:
     FieldModel<int32_t> id;
-    FieldModel<std::string> name;
+    FieldModel<stdb::memory::string> name;
     FieldModel<::proto::State> state;
     FieldModel<::proto::Balance> wallet;
     FieldModel<std::optional<::proto::Balance>> asset;
