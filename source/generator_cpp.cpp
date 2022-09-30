@@ -209,6 +209,7 @@ void GeneratorCpp::GenerateImports()
 #include <memory_resource>
 #include <utility>
 #include <variant>
+#include "memory/string.hpp"
 
 #if defined(FMT_VERSION)
 #include <fmt/core.h> 
@@ -636,7 +637,7 @@ public:
     pmr_buffer_t() = default;
     explicit pmr_buffer_t(allocator_type alloc): _data(alloc) {}
     explicit pmr_buffer_t(size_t capacity) { reserve(capacity); }
-    explicit pmr_buffer_t(const std::pmr::string& str) { assign(str); }
+    explicit pmr_buffer_t(const stdb::memory::string& str) { assign(str); }
     pmr_buffer_t(size_t size, uint8_t value) { assign(size, value); }
     pmr_buffer_t(const uint8_t* data, size_t size) { assign(data, size); }
     explicit pmr_buffer_t(const std::pmr::vector<uint8_t>& other) : _data(other) {}
@@ -645,7 +646,7 @@ public:
     explicit pmr_buffer_t(pmr_buffer_t&& other) = default;
     ~pmr_buffer_t() = default;
 
-    pmr_buffer_t& operator=(const std::pmr::string& str) { assign(str); return *this; }
+    pmr_buffer_t& operator=(const stdb::memory::string& str) { assign(str); return *this; }
     pmr_buffer_t& operator=(const std::pmr::vector<uint8_t>& other) { _data = other; return *this; }
     pmr_buffer_t& operator=(std::pmr::vector<uint8_t>&& other) { _data = std::move(other); return *this; }
     pmr_buffer_t& operator=(const pmr_buffer_t& other) = default;
@@ -674,14 +675,14 @@ public:
     void resize(size_t size, uint8_t value = 0) { _data.resize(size, value); }
     void shrink_to_fit() { _data.shrink_to_fit(); }
 
-    void assign(const std::pmr::string& str) { assign((const uint8_t*)str.c_str(), str.size()); }
+    void assign(const stdb::memory::string& str) { assign((const uint8_t*)str.c_str(), str.size()); }
     void assign(const std::pmr::vector<uint8_t>& vec) { assign(vec.begin(), vec.end()); }
     void assign(size_t size, uint8_t value) { _data.assign(size, value); }
     void assign(const uint8_t* data, size_t size) { _data.assign(data, data + size); }
     template <class InputIterator>
     void assign(InputIterator first, InputIterator last) { _data.assign(first, last); }
     iterator insert(const_iterator position, uint8_t value) { return _data.insert(position, value); }
-    iterator insert(const_iterator position, const std::pmr::string& str) { return insert(position, (const uint8_t*)str.c_str(), str.size()); }
+    iterator insert(const_iterator position, const stdb::memory::string& str) { return insert(position, (const uint8_t*)str.c_str(), str.size()); }
     iterator insert(const_iterator position, const std::pmr::vector<uint8_t>& vec) { return insert(position, vec.begin(), vec.end()); }
     iterator insert(const_iterator position, size_t size, uint8_t value) { return _data.insert(position, size, value); }
     iterator insert(const_iterator position, const uint8_t* data, size_t size) { return _data.insert(position, data, data + size); }
@@ -2622,7 +2623,7 @@ void GeneratorCpp::GenerateFBEFieldModelPMRString_Header()
     std::string code = R"CODE(
 // Fast Binary Encoding field model string specialization
 template <>
-class FieldModel<std::pmr::string>
+class FieldModel<stdb::memory::string>
 {
 public:
     FieldModel(FBEBuffer& buffer, size_t offset) noexcept : _buffer(buffer), _offset(offset) {}
@@ -2651,9 +2652,9 @@ public:
     template <size_t N>
     size_t get(std::array<char, N>& data) const noexcept { return get(data.data(), data.size()); }
     // Get the pmr string value
-    void get(std::pmr::string& value) const noexcept;
+    void get(stdb::memory::string& value) const noexcept;
     // Get the pmr string value
-    void get(std::pmr::string& value, const std::pmr::string& defaults) const noexcept;
+    void get(stdb::memory::string& value, const stdb::memory::string& defaults) const noexcept;
 
     // Set the string value
     void set(const char* data, size_t size);
@@ -2664,7 +2665,7 @@ public:
     template <size_t N>
     void set(const std::array<char, N>& data) { set(data.data(), data.size()); }
     // Set the string value
-    void set(const std::pmr::string& value);
+    void set(const stdb::memory::string& value);
 
 private:
     FBEBuffer& _buffer;
@@ -2837,7 +2838,7 @@ void FieldModel<std::string>::set(const std::string& value)
 void GeneratorCpp::GenerateFBEFieldModelPMRString_Source()
 {
     std::string code = R"CODE(
-size_t FieldModel<std::pmr::string>::fbe_extra() const noexcept
+size_t FieldModel<stdb::memory::string>::fbe_extra() const noexcept
 {
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
         return 0;
@@ -2850,7 +2851,7 @@ size_t FieldModel<std::pmr::string>::fbe_extra() const noexcept
     return (size_t)(4 + fbe_string_size);
 }
 
-bool FieldModel<std::pmr::string>::verify() const noexcept
+bool FieldModel<stdb::memory::string>::verify() const noexcept
 {
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
         return true;
@@ -2869,7 +2870,7 @@ bool FieldModel<std::pmr::string>::verify() const noexcept
     return true;
 }
 
-size_t FieldModel<std::pmr::string>::get(char* data, size_t size) const noexcept
+size_t FieldModel<stdb::memory::string>::get(char* data, size_t size) const noexcept
 {
     assert(((size == 0) || (data != nullptr)) && "Invalid buffer!");
     if ((size > 0) && (data == nullptr))
@@ -2896,7 +2897,7 @@ size_t FieldModel<std::pmr::string>::get(char* data, size_t size) const noexcept
     return result;
 }
 
-void FieldModel<std::pmr::string>::get(std::pmr::string& value) const noexcept
+void FieldModel<stdb::memory::string>::get(stdb::memory::string& value) const noexcept
 {
     value.clear();
 
@@ -2919,7 +2920,7 @@ void FieldModel<std::pmr::string>::get(std::pmr::string& value) const noexcept
     value.assign((const char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), fbe_string_size);
 }
 
-void FieldModel<std::pmr::string>::get(std::pmr::string& value, const std::pmr::string& defaults) const noexcept
+void FieldModel<stdb::memory::string>::get(stdb::memory::string& value, const stdb::memory::string& defaults) const noexcept
 {
     value = defaults;
 
@@ -2942,7 +2943,7 @@ void FieldModel<std::pmr::string>::get(std::pmr::string& value, const std::pmr::
     value.assign((const char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), fbe_string_size);
 }
 
-void FieldModel<std::pmr::string>::set(const char* data, size_t size)
+void FieldModel<stdb::memory::string>::set(const char* data, size_t size)
 {
     assert(((size == 0) || (data != nullptr)) && "Invalid buffer!");
     if ((size > 0) && (data == nullptr))
@@ -2965,7 +2966,7 @@ void FieldModel<std::pmr::string>::set(const char* data, size_t size)
     memcpy((char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), data, fbe_string_size);
 }
 
-void FieldModel<std::pmr::string>::set(const std::pmr::string& value)
+void FieldModel<stdb::memory::string>::set(const stdb::memory::string& value)
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -6273,6 +6274,15 @@ struct KeyWriter<TWriter, std::string>
     }
 };
 
+template <class TWriter>
+struct KeyWriter<TWriter, stdb::memory::string>
+{
+    static bool to_json_key(TWriter& writer, const stdb::memory::string& key)
+    {
+        return writer.Key(key.c_str());
+    }
+};
+
 template <class TWriter, size_t N>
 struct KeyWriter<TWriter, char[N]>
 {
@@ -6438,6 +6448,15 @@ struct ValueWriter<TWriter, std::string>
     static bool to_json(TWriter& writer, const std::string& value, bool scope = true)
     {
         return writer.String(value);
+    }
+};
+
+template <class TWriter>
+struct ValueWriter<TWriter, stdb::memory::string>
+{
+    static bool to_json(TWriter& writer, const stdb::memory::string& value, bool scope = true)
+    {
+        return writer.String(value.c_str());
     }
 };
 
@@ -6609,6 +6628,15 @@ template <class TJson>
 struct KeyReader<TJson, std::string>
 {
     static bool from_json_key(const TJson& json, std::string& key)
+    {
+        return FBE::JSON::from_json(json, key);
+    }
+};
+
+template <class TJson>
+struct KeyReader<TJson, stdb::memory::string>
+{
+    static bool from_json_key(const TJson& json, stdb::memory::string& key)
     {
         return FBE::JSON::from_json(json, key);
     }
@@ -6916,6 +6944,23 @@ template <class TJson>
 struct ValueReader<TJson, std::string>
 {
     static bool from_json(const TJson& json, std::string& value)
+    {
+        value = "";
+
+        // Schema validation
+        if (json.IsNull() || !json.IsString())
+            return false;
+
+        // Save the value
+        value.assign(json.GetString(), (size_t)json.GetStringLength());
+        return true;
+    }
+};
+
+template <class TJson>
+struct ValueReader<TJson, stdb::memory::string>
+{
+    static bool from_json(const TJson& json, stdb::memory::string& value)
     {
         value = "";
 
@@ -8833,7 +8878,8 @@ void GeneratorCpp::GenerateStruct_Source(const std::shared_ptr<Package>& p, cons
                 Write(std::string(first ? ": " : ", ") + *field->name + "(");
                 if (field->optional) {
                     Write("std::nullopt");
-                } else if (*field->type == "string" || *field->type == "bytes" || IsContainerType(*field)) {
+                } else if (*field->type == "string") {
+                } else if (*field->type == "bytes" || IsContainerType(*field)) {
                     Write("alloc");
                 } else if (field->value || IsPrimitiveType(*field->type, field->optional)) {
                     Write(ConvertDefault(*p->name, *field));
@@ -11512,7 +11558,7 @@ std::string GeneratorCpp::ConvertTypeName(const std::string& package, const std:
     else if (type == "decimal")
         return "FBE::decimal_t";
     else if (type == "string")
-        return Arena() ? "std::pmr::string" : "std::string";
+        return "stdb::memory::string";
     else if (type == "timestamp")
         return "uint64_t";
     else if (type == "uuid")

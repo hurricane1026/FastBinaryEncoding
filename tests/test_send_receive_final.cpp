@@ -66,7 +66,7 @@ bool SendAndReceiveFinal(size_t index1, size_t index2)
     return receiver.check();
 }
 
-TEST_CASE("Send & Receive (Final)", "[FBE]")
+TEST_CASE("Send & Receive (Final)", "[FBE][.]")
 {
     for (size_t i = 0; i < 1000; ++i)
         for (size_t j = i; j < 1000; ++j)

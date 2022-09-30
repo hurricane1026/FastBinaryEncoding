@@ -7,7 +7,7 @@
 #include "../proto/proto_final_models.h"
 #include "../proto/test_final_models.h"
 
-TEST_CASE("Serialization (Final): domain", "[FBE]")
+TEST_CASE("Serialization (Final): domain", "[FBE][.]")
 {
     // Create a new account with some orders
     proto::Account account1 = { 1, "Test", proto::State::good, { "USD", 1000.0 }, std::make_optional<proto::Balance>({ "EUR", 100.0 }), {} };
@@ -63,7 +63,7 @@ TEST_CASE("Serialization (Final): domain", "[FBE]")
     REQUIRE(account2.orders[2].volume == 10.0);
 }
 
-TEST_CASE("Serialization (Final): struct simple", "[FBE]")
+TEST_CASE("Serialization (Final): struct simple", "[FBE][.]")
 {
     // Create a new struct
     test::StructSimple struct1;
@@ -170,7 +170,7 @@ TEST_CASE("Serialization (Final): struct simple", "[FBE]")
     REQUIRE(struct2.f40 == struct1.f40);
 }
 
-TEST_CASE("Serialization (Final): struct optional", "[FBE]")
+TEST_CASE("Serialization (Final): struct optional", "[FBE][.]")
 {
     // Create a new struct
     test::StructOptional struct1;
@@ -421,7 +421,7 @@ TEST_CASE("Serialization (Final): struct optional", "[FBE]")
     REQUIRE(struct2.f157 == struct1.f157);
 }
 
-TEST_CASE("Serialization (Final): struct nested", "[FBE]")
+TEST_CASE("Serialization (Final): struct nested", "[FBE][.]")
 {
     // Create a new struct
     test::StructNested struct1;
@@ -692,7 +692,7 @@ TEST_CASE("Serialization (Final): struct nested", "[FBE]")
     REQUIRE(struct2.f1007 == struct1.f1007);
 }
 
-TEST_CASE("Serialization (Final): struct bytes", "[FBE]")
+TEST_CASE("Serialization (Final): struct bytes", "[FBE][.]")
 {
     const char* f1 = "ABC";
     const char* f2 = "test";
@@ -732,7 +732,7 @@ TEST_CASE("Serialization (Final): struct bytes", "[FBE]")
     REQUIRE(!struct2.f3.has_value());
 }
 
-TEST_CASE("Serialization (Final): struct array", "[FBE]")
+TEST_CASE("Serialization (Final): struct array", "[FBE][.]")
 {
     // Create a new struct
     test::StructArray struct1;
@@ -827,7 +827,7 @@ TEST_CASE("Serialization (Final): struct array", "[FBE]")
     REQUIRE(struct2.f10[1] == std::nullopt);
 }
 
-TEST_CASE("Serialization (Final): struct vector", "[FBE]")
+TEST_CASE("Serialization (Final): struct vector", "[FBE][.]")
 {
     // Create a new struct
     test::StructVector struct1;
@@ -922,7 +922,7 @@ TEST_CASE("Serialization (Final): struct vector", "[FBE]")
     REQUIRE(struct2.f10[1] == std::nullopt);
 }
 
-TEST_CASE("Serialization (Final): struct list", "[FBE]")
+TEST_CASE("Serialization (Final): struct list", "[FBE][.]")
 {
     // Create a new struct
     test::StructList struct1;
@@ -1017,7 +1017,7 @@ TEST_CASE("Serialization (Final): struct list", "[FBE]")
     REQUIRE(struct2.f10.back() == std::nullopt);
 }
 
-TEST_CASE("Serialization (Final): struct set", "[FBE]")
+TEST_CASE("Serialization (Final): struct set", "[FBE][.]")
 {
     // Create a new struct
     test::StructSet struct1;
@@ -1071,7 +1071,7 @@ TEST_CASE("Serialization (Final): struct set", "[FBE]")
     REQUIRE(struct2.f4.find(s2) != struct2.f4.end());
 }
 
-TEST_CASE("Serialization (Final): struct map", "[FBE]")
+TEST_CASE("Serialization (Final): struct map", "[FBE][.]")
 {
     // Create a new struct
     test::StructMap struct1;
@@ -1153,7 +1153,7 @@ TEST_CASE("Serialization (Final): struct map", "[FBE]")
     REQUIRE(struct2.f10.find(20)->second == std::nullopt);
 }
 
-TEST_CASE("Serialization (Final): struct hash", "[FBE]")
+TEST_CASE("Serialization (Final): struct hash", "[FBE][.]")
 {
     // Create a new struct
     test::StructHash struct1;
@@ -1235,7 +1235,7 @@ TEST_CASE("Serialization (Final): struct hash", "[FBE]")
     REQUIRE(struct2.f10.find("20")->second == std::nullopt);
 }
 
-TEST_CASE("Serialization (Final): struct hash extended", "[FBE]")
+TEST_CASE("Serialization (Final): struct hash extended", "[FBE][.]")
 {
     // Create a new struct
     test::StructHashEx struct1;

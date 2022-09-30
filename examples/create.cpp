@@ -36,9 +36,9 @@ int main(int argc, char** argv)
     assert(access.verify());
 
     int32_t id;
-    std::string name;
+    stdb::memory::string name;
     proto::State state;
-    std::string wallet_currency;
+    stdb::memory::string wallet_currency;
     double wallet_amount;
 
     account_begin = access.model.get_begin();

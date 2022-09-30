@@ -1977,8 +1977,9 @@ void GeneratorCpp::GeneratePtrStruct_Source(const std::shared_ptr<Package>& p, c
                     Write(std::string("assign_member<") + ConvertTypeName(*p->name, *field) + ">(alloc)");
                 } else if (field->ptr && !IsContainerType(*field)) {
                     Write("nullptr");
-                // container and string should be initialized with memory_resource
-                } else if (*field->type == "string" || *field->type == "bytes" || IsContainerType(*field)) {
+                } else if (*field->type == "string") {
+                // container should be initialized with memory_resource
+                } else if (*field->type == "bytes" || IsContainerType(*field)) {
                     Write("alloc");
                 } else if (field->value || IsPrimitiveType(*field->type, field->optional)) {
                     Write(ConvertDefault(*p->name, *field));
@@ -3562,7 +3563,7 @@ std::string GeneratorCpp::ConvertPtrTypeName(const std::string& package, const s
     else if (type == "decimal")
         return "FBE::decimal_t";
     else if (type == "string") 
-        return Arena() ? "std::pmr::string" : "std::string";
+        return "stdb::memory::string";
     else if (type == "timestamp")
         return "uint64_t";
     else if (type == "uuid")

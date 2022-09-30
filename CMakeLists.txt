@@ -8,7 +8,9 @@ project(FastBinaryEncoding)
 
 ## set to c++20
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(COMMON_WARNING_FLAGS "${COMMON_WARNING_FLAGS} -Wcomment")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMMON_WARNING_FLAGS} -frtti -fexceptions -fsized-deallocation")
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Doxygen
 find_package(Doxygen)
@@ -33,6 +35,8 @@ include(SystemInformation)
 # External packages
 find_package(BISON)
 find_package(FLEX)
+
+find_package(fmt)
 
 # Modules
 add_subdirectory("modules")
@@ -170,7 +174,7 @@ endforeach()
   file(GLOB_RECURSE PROTO_SOURCE_FILES "proto/*.cpp")
   add_library(proto ${PROTO_HEADER_FILES} ${PROTO_INLINE_FILES} ${PROTO_SOURCE_FILES})
   set_target_properties(proto PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}" FOLDER "libraries")
-  target_include_directories(proto PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/proto")
+  target_include_directories(proto PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/proto"  ${memory})
   target_link_libraries(proto ${LINKLIBS})
   list(APPEND INSTALL_TARGETS proto)
   list(APPEND LINKLIBS proto)
@@ -186,7 +190,7 @@ endforeach()
     add_dependencies(${EXAMPLE_TARGET} ${PROTO_DEPENDENCIES})
     set_target_properties(${EXAMPLE_TARGET} PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}" FOLDER "examples")
     target_include_directories(${EXAMPLE_TARGET} PUBLIC ${rapidjson})
-    target_link_libraries(${EXAMPLE_TARGET} ${LINKLIBS})
+    target_link_libraries(${EXAMPLE_TARGET} ${LINKLIBS} xxhash)
     list(APPEND INSTALL_TARGETS ${EXAMPLE_TARGET})
     list(APPEND INSTALL_TARGETS_PDB ${EXAMPLE_TARGET})
   endforeach()
@@ -214,8 +218,8 @@ endforeach()
   add_executable(fbe-tests ${TESTS_HEADER_FILES} ${TESTS_INLINE_FILES} ${TESTS_SOURCE_FILES} ${Catch2} ${PROTO_FILES})
   add_dependencies(fbe-tests ${PROTO_DEPENDENCIES})
   set_target_properties(fbe-tests PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}" FOLDER "tests")
-  target_include_directories(fbe-tests PRIVATE ${Catch2} PUBLIC ${rapidjson})
-  target_link_libraries(fbe-tests ${LINKLIBS})
+  target_include_directories(fbe-tests PRIVATE ${Catch2} PUBLIC ${rapidjson} ${memory})
+  target_link_libraries(fbe-tests ${LINKLIBS} arena xxhash)
   list(APPEND INSTALL_TARGETS fbe-tests)
   list(APPEND INSTALL_TARGETS_PDB fbe-tests)
 
