@@ -44,7 +44,7 @@ public:
 
     std::string ArenaHeader() const noexcept { return "memory/arena/arena.hpp"; }
 
-    std::vector<std::string> ArenaTags() const noexcept { return {"ArenaManagedCreateOnlyTag"}; }
+    std::vector<std::string> ArenaTags() const noexcept { return {"ArenaFullManagedTag"}; }
 
     bool ImportPtr() const noexcept { return _import_ptr; }
     GeneratorCpp& ImportPtr(bool import_ptr) noexcept { _import_ptr = import_ptr; return *this; }
