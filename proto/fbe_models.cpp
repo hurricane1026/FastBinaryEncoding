@@ -619,7 +619,7 @@ void FieldModel<std::string>::set(const std::string& value)
     memcpy((char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), value.data(), fbe_string_size);
 }
 
-size_t FieldModel<stdb::memory::string>::fbe_extra() const noexcept
+size_t FieldModel<stdb::memory::arena_string>::fbe_extra() const noexcept
 {
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
         return 0;
@@ -632,7 +632,7 @@ size_t FieldModel<stdb::memory::string>::fbe_extra() const noexcept
     return (size_t)(4 + fbe_string_size);
 }
 
-bool FieldModel<stdb::memory::string>::verify() const noexcept
+bool FieldModel<stdb::memory::arena_string>::verify() const noexcept
 {
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
         return true;
@@ -651,7 +651,7 @@ bool FieldModel<stdb::memory::string>::verify() const noexcept
     return true;
 }
 
-size_t FieldModel<stdb::memory::string>::get(char* data, size_t size) const noexcept
+size_t FieldModel<stdb::memory::arena_string>::get(char* data, size_t size) const noexcept
 {
     assert(((size == 0) || (data != nullptr)) && "Invalid buffer!");
     if ((size > 0) && (data == nullptr))
@@ -678,7 +678,7 @@ size_t FieldModel<stdb::memory::string>::get(char* data, size_t size) const noex
     return result;
 }
 
-void FieldModel<stdb::memory::string>::get(stdb::memory::string& value) const noexcept
+void FieldModel<stdb::memory::arena_string>::get(stdb::memory::arena_string& value) const noexcept
 {
     value.clear();
 
@@ -701,7 +701,7 @@ void FieldModel<stdb::memory::string>::get(stdb::memory::string& value) const no
     value.assign((const char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), fbe_string_size);
 }
 
-void FieldModel<stdb::memory::string>::get(stdb::memory::string& value, const stdb::memory::string& defaults) const noexcept
+void FieldModel<stdb::memory::arena_string>::get(stdb::memory::arena_string& value, const stdb::memory::arena_string& defaults) const noexcept
 {
     value = defaults;
 
@@ -724,7 +724,7 @@ void FieldModel<stdb::memory::string>::get(stdb::memory::string& value, const st
     value.assign((const char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), fbe_string_size);
 }
 
-void FieldModel<stdb::memory::string>::set(const char* data, size_t size)
+void FieldModel<stdb::memory::arena_string>::set(const char* data, size_t size)
 {
     assert(((size == 0) || (data != nullptr)) && "Invalid buffer!");
     if ((size > 0) && (data == nullptr))
@@ -747,7 +747,7 @@ void FieldModel<stdb::memory::string>::set(const char* data, size_t size)
     memcpy((char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), data, fbe_string_size);
 }
 
-void FieldModel<stdb::memory::string>::set(const stdb::memory::string& value)
+void FieldModel<stdb::memory::arena_string>::set(const stdb::memory::arena_string& value)
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())

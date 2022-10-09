@@ -308,7 +308,7 @@ private:
 
 // Fast Binary Encoding field model string specialization
 template <>
-class FieldModel<stdb::memory::string>
+class FieldModel<stdb::memory::arena_string>
 {
 public:
     FieldModel(FBEBuffer& buffer, size_t offset) noexcept : _buffer(buffer), _offset(offset) {}
@@ -337,9 +337,9 @@ public:
     template <size_t N>
     size_t get(std::array<char, N>& data) const noexcept { return get(data.data(), data.size()); }
     // Get the pmr string value
-    void get(stdb::memory::string& value) const noexcept;
+    void get(stdb::memory::arena_string& value) const noexcept;
     // Get the pmr string value
-    void get(stdb::memory::string& value, const stdb::memory::string& defaults) const noexcept;
+    void get(stdb::memory::arena_string& value, const stdb::memory::arena_string& defaults) const noexcept;
 
     // Set the string value
     void set(const char* data, size_t size);
@@ -350,7 +350,7 @@ public:
     template <size_t N>
     void set(const std::array<char, N>& data) { set(data.data(), data.size()); }
     // Set the string value
-    void set(const stdb::memory::string& value);
+    void set(const stdb::memory::arena_string& value);
 
 private:
     FBEBuffer& _buffer;
