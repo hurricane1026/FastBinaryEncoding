@@ -2655,7 +2655,7 @@ public:
     // Get the pmr string value
     void get(stdb::memory::arena_string& value) const noexcept;
     // Get the pmr string value
-    void get(stdb::memory::arena_string& value, const stdb::memory::string& defaults) const noexcept;
+    void get(stdb::memory::arena_string& value, const stdb::memory::arena_string& defaults) const noexcept;
 
     // Set the string value
     void set(const char* data, size_t size);
@@ -2921,7 +2921,7 @@ void FieldModel<stdb::memory::arena_string>::get(stdb::memory::arena_string& val
     value.assign((const char*)(_buffer.data() + _buffer.offset() + fbe_string_offset + 4), fbe_string_size);
 }
 
-void FieldModel<stdb::memory::arena_string>::get(stdb::memory::arena_string& value, const stdb::memory::arena_tring& defaults) const noexcept
+void FieldModel<stdb::memory::arena_string>::get(stdb::memory::arena_string& value, const stdb::memory::arena_string& defaults) const noexcept
 {
     value = defaults;
 
