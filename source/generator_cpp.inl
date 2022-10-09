@@ -3563,7 +3563,7 @@ std::string GeneratorCpp::ConvertPtrTypeName(const std::string& package, const s
     else if (type == "decimal")
         return "FBE::decimal_t";
     else if (type == "string") 
-        return "stdb::memory::string";
+        return Arena()? "stdb::memory::arena_string": "stdb::memory::string";
     else if (type == "timestamp")
         return "uint64_t";
     else if (type == "uuid")
