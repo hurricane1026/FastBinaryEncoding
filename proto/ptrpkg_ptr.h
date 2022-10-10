@@ -45,11 +45,11 @@ struct Line : FBE::Base
 
     Line();
     Line(::variants_ptr::Value&& arg_value, std::unique_ptr<::variants_ptr::Value> arg_value_ptr);
-    Line(const Line& other) = delete;
+    Line(const Line& other) = default;
     Line(Line&& other) noexcept;
     ~Line() override;
 
-    Line& operator=(const Line& other) = delete;
+    Line& operator=(const Line& other) = default;
     Line& operator=(Line&& other) noexcept;
 
     bool operator==(const Line& other) const noexcept;

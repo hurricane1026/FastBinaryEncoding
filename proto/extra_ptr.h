@@ -46,11 +46,11 @@ struct Info : FBE::Base
 
     Info();
     Info(const stdb::memory::string& arg_info, std::unique_ptr<::extra::Extra> arg_extra, std::vector<std::unique_ptr<::extra::Extra>> arg_extras, std::vector<std::unique_ptr<::extra::Extra>> arg_extras1);
-    Info(const Info& other) = delete;
+    Info(const Info& other) = default;
     Info(Info&& other) noexcept;
     ~Info() override;
 
-    Info& operator=(const Info& other) = delete;
+    Info& operator=(const Info& other) = default;
     Info& operator=(Info&& other) noexcept;
 
     bool operator==(const Info& other) const noexcept;
@@ -103,11 +103,11 @@ struct Extra : FBE::Base
 
     Extra();
     Extra(int64_t arg_num, const stdb::memory::string& arg_data, std::unique_ptr<::extra::Info> arg_info, std::unique_ptr<::extra::Info> arg_info2, ::extra::Info&& arg_info3, std::vector<::extra::Info> arg_infov, std::vector<std::unique_ptr<::extra::Info>> arg_infopv, std::list<::extra::Info> arg_infol, std::list<std::unique_ptr<::extra::Info>> arg_infopl);
-    Extra(const Extra& other) = delete;
+    Extra(const Extra& other) = default;
     Extra(Extra&& other) noexcept;
     ~Extra() override;
 
-    Extra& operator=(const Extra& other) = delete;
+    Extra& operator=(const Extra& other) = default;
     Extra& operator=(Extra&& other) noexcept;
 
     bool operator==(const Extra& other) const noexcept;

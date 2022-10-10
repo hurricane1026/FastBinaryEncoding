@@ -1862,11 +1862,16 @@ void GeneratorCpp::GeneratePtrStruct_Header(const std::shared_ptr<Package>& p, c
         WriteLine(");");
     }
 
-    WriteLineIndent(*s->name + "(const " + *s->name + "& other) = delete;");
+    // copy constructor
+    WriteLineIndent(*s->name + "(const " + *s->name + "& other) = default;");
+    // move constructor
     WriteLineIndent(*s->name + "(" + *s->name + "&& other) noexcept;");
+    // destructor
     WriteLineIndent("~" + *s->name + "() override;");
     WriteLine();
-    WriteLineIndent(*s->name + "& operator=(const " + *s->name + "& other) = delete;");
+    // copy assignment operator
+    WriteLineIndent(*s->name + "& operator=(const " + *s->name + "& other) = default;");
+    // move assignment operator
     WriteLineIndent(*s->name + "& operator=(" + *s->name + "&& other) noexcept;");
 
     // Generate struct compare operators

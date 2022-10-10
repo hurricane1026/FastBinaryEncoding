@@ -51,11 +51,11 @@ struct Simple : FBE::Base
 
     Simple();
     explicit Simple(const stdb::memory::string& arg_name);
-    Simple(const Simple& other) = delete;
+    Simple(const Simple& other) = default;
     Simple(Simple&& other) noexcept;
     ~Simple() override;
 
-    Simple& operator=(const Simple& other) = delete;
+    Simple& operator=(const Simple& other) = default;
     Simple& operator=(Simple&& other) noexcept;
 
     bool operator==(const Simple& other) const noexcept;
@@ -100,11 +100,11 @@ struct Value : FBE::Base
 
     Value();
     Value(::variants_ptr::V&& arg_v, std::optional<::variants_ptr::V> arg_vo, std::optional<::variants_ptr::V> arg_vo2);
-    Value(const Value& other) = delete;
+    Value(const Value& other) = default;
     Value(Value&& other) noexcept;
     ~Value() override;
 
-    Value& operator=(const Value& other) = delete;
+    Value& operator=(const Value& other) = default;
     Value& operator=(Value&& other) noexcept;
 
     bool operator==(const Value& other) const noexcept;
@@ -148,11 +148,11 @@ struct ValueContainer : FBE::Base
 
     ValueContainer();
     ValueContainer(std::vector<::variants_ptr::V> arg_vv, std::unordered_map<int32_t, ::variants_ptr::V> arg_vm);
-    ValueContainer(const ValueContainer& other) = delete;
+    ValueContainer(const ValueContainer& other) = default;
     ValueContainer(ValueContainer&& other) noexcept;
     ~ValueContainer() override;
 
-    ValueContainer& operator=(const ValueContainer& other) = delete;
+    ValueContainer& operator=(const ValueContainer& other) = default;
     ValueContainer& operator=(ValueContainer&& other) noexcept;
 
     bool operator==(const ValueContainer& other) const noexcept;

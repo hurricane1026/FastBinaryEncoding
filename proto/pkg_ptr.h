@@ -47,11 +47,11 @@ struct Info : FBE::Base
 
     Info();
     Info(const stdb::memory::string& arg_info, ::osa::Sex&& arg_sex, ::osa::MyFLags&& arg_flag, ::osa::Extra&& arg_extra);
-    Info(const Info& other) = delete;
+    Info(const Info& other) = default;
     Info(Info&& other) noexcept;
     ~Info() override;
 
-    Info& operator=(const Info& other) = delete;
+    Info& operator=(const Info& other) = default;
     Info& operator=(Info&& other) noexcept;
 
     bool operator==(const Info& other) const noexcept;
@@ -95,11 +95,11 @@ struct Detail : FBE::Base
 
     Detail();
     Detail(std::vector<::osa::Extra> arg_extrav, std::map<int32_t, ::osa::Extra> arg_extram);
-    Detail(const Detail& other) = delete;
+    Detail(const Detail& other) = default;
     Detail(Detail&& other) noexcept;
     ~Detail() override;
 
-    Detail& operator=(const Detail& other) = delete;
+    Detail& operator=(const Detail& other) = default;
     Detail& operator=(Detail&& other) noexcept;
 
     bool operator==(const Detail& other) const noexcept;
