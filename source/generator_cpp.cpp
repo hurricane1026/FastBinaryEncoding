@@ -209,11 +209,11 @@ void GeneratorCpp::GenerateImports()
 #include <memory_resource>
 #include <utility>
 #include <variant>
-#include "memory/string.hpp"
-#include "memory/arena_string.hpp"
+#include "string/string.hpp"
+#include "string/arena_string.hpp"
 
 #if defined(FMT_VERSION)
-#include <fmt/core.h> 
+#include <fmt/core.h>
 #endif
 
 #if defined(unix) || defined(__unix) || defined(__unix__) || defined(__APPLE__)
