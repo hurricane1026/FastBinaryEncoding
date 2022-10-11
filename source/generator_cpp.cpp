@@ -206,7 +206,11 @@ void GeneratorCpp::GenerateImports()
 #include <type_traits>
 #include <unordered_map>
 #include <vector>
+#if defined(__APPLE__) && (__clang__)
+#include <experimental/memory_resource>
+#else
 #include <memory_resource>
+#endif
 #include <utility>
 #include <variant>
 #include "string/string.hpp"
