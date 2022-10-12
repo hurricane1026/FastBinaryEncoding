@@ -41,7 +41,19 @@
 #include <type_traits>
 #include <unordered_map>
 #include <vector>
+#if defined(__APPLE__) && (__clang__)
+#include <experimental/memory_resource>
+#include <experimental/vector>
+#include <experimental/list>
+#include <experimental/map>
+#include <experimental/unordered_map>
+#include <experimental/string>
+#include <experimental/set>
+namespace pmr = std::experimental::pmr;
+#else
 #include <memory_resource>
+namespace pmr = std::pmr;
+#endif
 #include <utility>
 #include <variant>
 #include "string/string.hpp"
@@ -213,17 +225,17 @@ private:
 
 //! PMR bytes buffer type
 /*!
-    Represents pmr bytes buffer which is a lightweight wrapper around std::pmr::vector<uint8_t>
+    Represents pmr bytes buffer which is a lightweight wrapper around pmr::vector<uint8_t>
     with similar interface.
 */
 class pmr_buffer_t
 {
 public:
-    typedef std::pmr::vector<uint8_t>::iterator iterator;
-    typedef std::pmr::vector<uint8_t>::const_iterator const_iterator;
-    typedef std::pmr::vector<uint8_t>::reverse_iterator reverse_iterator;
-    typedef std::pmr::vector<uint8_t>::const_reverse_iterator const_reverse_iterator;
-    using allocator_type = std::pmr::polymorphic_allocator<char>;
+    typedef pmr::vector<uint8_t>::iterator iterator;
+    typedef pmr::vector<uint8_t>::const_iterator const_iterator;
+    typedef pmr::vector<uint8_t>::reverse_iterator reverse_iterator;
+    typedef pmr::vector<uint8_t>::const_reverse_iterator const_reverse_iterator;
+    using allocator_type = pmr::polymorphic_allocator<char>;
 
 
     pmr_buffer_t() = default;
@@ -232,15 +244,15 @@ public:
     explicit pmr_buffer_t(const stdb::memory::arena_string& str) { assign(str); }
     pmr_buffer_t(size_t size, uint8_t value) { assign(size, value); }
     pmr_buffer_t(const uint8_t* data, size_t size) { assign(data, size); }
-    explicit pmr_buffer_t(const std::pmr::vector<uint8_t>& other) : _data(other) {}
-    explicit pmr_buffer_t(std::pmr::vector<uint8_t>&& other) : _data(std::move(other)) {}
+    explicit pmr_buffer_t(const pmr::vector<uint8_t>& other) : _data(other) {}
+    explicit pmr_buffer_t(pmr::vector<uint8_t>&& other) : _data(std::move(other)) {}
     explicit pmr_buffer_t(const pmr_buffer_t& other) = default;
     explicit pmr_buffer_t(pmr_buffer_t&& other) = default;
     ~pmr_buffer_t() = default;
 
     pmr_buffer_t& operator=(const stdb::memory::arena_string& str) { assign(str); return *this; }
-    pmr_buffer_t& operator=(const std::pmr::vector<uint8_t>& other) { _data = other; return *this; }
-    pmr_buffer_t& operator=(std::pmr::vector<uint8_t>&& other) { _data = std::move(other); return *this; }
+    pmr_buffer_t& operator=(const pmr::vector<uint8_t>& other) { _data = other; return *this; }
+    pmr_buffer_t& operator=(pmr::vector<uint8_t>&& other) { _data = std::move(other); return *this; }
     pmr_buffer_t& operator=(const pmr_buffer_t& other) = default;
     pmr_buffer_t& operator=(pmr_buffer_t&& other) = default;
 
@@ -252,8 +264,8 @@ public:
     size_t size() const { return _data.size(); }
     size_t max_size() const { return _data.max_size(); }
 
-    std::pmr::vector<uint8_t>& buffer() noexcept { return _data; }
-    const std::pmr::vector<uint8_t>& buffer() const noexcept { return _data; }
+    pmr::vector<uint8_t>& buffer() noexcept { return _data; }
+    const pmr::vector<uint8_t>& buffer() const noexcept { return _data; }
     uint8_t* data() noexcept { return _data.data(); }
     const uint8_t* data() const noexcept { return _data.data(); }
     uint8_t& at(size_t index) { return _data.at(index); }
@@ -268,14 +280,14 @@ public:
     void shrink_to_fit() { _data.shrink_to_fit(); }
 
     void assign(const stdb::memory::arena_string& str) { assign((const uint8_t*)str.c_str(), str.size()); }
-    void assign(const std::pmr::vector<uint8_t>& vec) { assign(vec.begin(), vec.end()); }
+    void assign(const pmr::vector<uint8_t>& vec) { assign(vec.begin(), vec.end()); }
     void assign(size_t size, uint8_t value) { _data.assign(size, value); }
     void assign(const uint8_t* data, size_t size) { _data.assign(data, data + size); }
     template <class InputIterator>
     void assign(InputIterator first, InputIterator last) { _data.assign(first, last); }
     iterator insert(const_iterator position, uint8_t value) { return _data.insert(position, value); }
     iterator insert(const_iterator position, const stdb::memory::arena_string& str) { return insert(position, (const uint8_t*)str.c_str(), str.size()); }
-    iterator insert(const_iterator position, const std::pmr::vector<uint8_t>& vec) { return insert(position, vec.begin(), vec.end()); }
+    iterator insert(const_iterator position, const pmr::vector<uint8_t>& vec) { return insert(position, vec.begin(), vec.end()); }
     iterator insert(const_iterator position, size_t size, uint8_t value) { return _data.insert(position, size, value); }
     iterator insert(const_iterator position, const uint8_t* data, size_t size) { return _data.insert(position, data, data + size); }
     template <class InputIterator>
@@ -324,7 +336,7 @@ public:
     { os << value.string(); return os; }
 
 private:
-    std::pmr::vector<uint8_t> _data;
+    pmr::vector<uint8_t> _data;
     
 };
 

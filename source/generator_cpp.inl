@@ -372,8 +372,8 @@ public:
 
     code += code_extra;
 
-    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "std::pmr::vector");
-    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "std::pmr::list");
+    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "pmr::vector");
+    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "pmr::list");
     code += code_extra;
 
     code += R"CODE(
@@ -618,8 +618,8 @@ inline void FieldModelCustomArray<T, TStruct, N>::set(const std::vector<TStruct*
 )CODE";
     code += code_extra;
 
-    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "std::pmr::vector");
-    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "std::pmr::list");
+    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "pmr::vector");
+    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "pmr::list");
     code += code_extra;
 
     // Prepare code template
@@ -687,9 +687,9 @@ public:
 )CODE";
 
     code += code_extra;
-    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "std::pmr::vector");
-    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "std::pmr::list");
-    code_extra = std::regex_replace(code_extra, std::regex("std::set"), "std::pmr::set");
+    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "pmr::vector");
+    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "pmr::list");
+    code_extra = std::regex_replace(code_extra, std::regex("std::set"), "pmr::set");
     code += code_extra;
 
 code += R"CODE(
@@ -1026,9 +1026,9 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::set<TStruct*>& va
 
     code += code_extra;
 
-    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "std::pmr::vector");
-    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "std::pmr::list");
-    code_extra = std::regex_replace(code_extra, std::regex("std::set"), "std::pmr::set");
+    code_extra = std::regex_replace(code_extra, std::regex("std::vector"), "pmr::vector");
+    code_extra = std::regex_replace(code_extra, std::regex("std::list"), "pmr::list");
+    code_extra = std::regex_replace(code_extra, std::regex("std::set"), "pmr::set");
     code += code_extra;
 
     // Prepare code template
@@ -1091,8 +1091,8 @@ public:
 
     code += code_extra;
 
-    code_extra = std::regex_replace(code_extra, std::regex("std::map"), "std::pmr::map");
-    code_extra = std::regex_replace(code_extra, std::regex("std::unordered_map"), "std::pmr::unordered_map");
+    code_extra = std::regex_replace(code_extra, std::regex("std::map"), "pmr::map");
+    code_extra = std::regex_replace(code_extra, std::regex("std::unordered_map"), "pmr::unordered_map");
     code += code_extra;
 
     code += R"CODE(
@@ -1388,8 +1388,8 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const
 
     code += code_extra;
 
-    code_extra = std::regex_replace(code_extra, std::regex("std::map"), "std::pmr::map");
-    code_extra = std::regex_replace(code_extra, std::regex("std::unordered_map"), "std::pmr::unordered_map");
+    code_extra = std::regex_replace(code_extra, std::regex("std::map"), "pmr::map");
+    code_extra = std::regex_replace(code_extra, std::regex("std::unordered_map"), "pmr::unordered_map");
     code += code_extra;
 
     // Prepare code template
@@ -3604,7 +3604,7 @@ GeneratorCpp::ConvertPtrTypeName(const std::string &package, const StructField &
 {
     std::string prefix = "std";
     if (Arena()) {
-        prefix += "::pmr";
+        prefix = "pmr";
     }
     bool typeptr = field.ptr;
     if (field.array)
@@ -3631,7 +3631,7 @@ std::string GeneratorCpp::ConvertVariantTypeName(const std::string& package, con
 {
     std::string prefix = "std";
     if (Arena()) {
-        prefix += "::pmr";
+        prefix = "pmr";
     }
     if (variant.vector)
         return prefix + "::vector<" + ConvertPtrTypeName(package, *variant.type, false, variant.ptr, false) + ">";

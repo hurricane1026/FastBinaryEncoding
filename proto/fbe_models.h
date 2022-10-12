@@ -236,7 +236,7 @@ public:
     template <size_t N>
     size_t get(uint8_t (&data)[N]) const noexcept { return get(data, N); }
     // Get the bytes value
-    void get(std::pmr::vector<uint8_t>& value) const noexcept;
+    void get(pmr::vector<uint8_t>& value) const noexcept;
     // Get the bytes value
     void get(pmr_buffer_t& value) const noexcept { get(value.buffer()); }
 
@@ -246,7 +246,7 @@ public:
     template <size_t N>
     void set(const uint8_t (&data)[N]) { set(data, N); }
     // Set the bytes value
-    void set(const std::pmr::vector<uint8_t>& value) { set(value.data(), value.size()); }
+    void set(const pmr::vector<uint8_t>& value) { set(value.data(), value.size()); }
     // Set the bytes value
     void set(const pmr_buffer_t& value) { set(value.buffer()); }
 
@@ -308,7 +308,7 @@ private:
 
 // Fast Binary Encoding field model string specialization
 template <>
-class FieldModel<std::pmr::string>
+class FieldModel<pmr::string>
 {
 public:
     FieldModel(FBEBuffer& buffer, size_t offset) noexcept : _buffer(buffer), _offset(offset) {}
@@ -337,9 +337,9 @@ public:
     template <size_t N>
     size_t get(std::array<char, N>& data) const noexcept { return get(data.data(), data.size()); }
     // Get the pmr string value
-    void get(std::pmr::string& value) const noexcept;
+    void get(pmr::string& value) const noexcept;
     // Get the pmr string value
-    void get(std::pmr::string& value, const std::pmr::string& defaults) const noexcept;
+    void get(pmr::string& value, const pmr::string& defaults) const noexcept;
 
     // Set the string value
     void set(const char* data, size_t size);
@@ -350,7 +350,7 @@ public:
     template <size_t N>
     void set(const std::array<char, N>& data) { set(data.data(), data.size()); }
     // Set the string value
-    void set(const std::pmr::string& value);
+    void set(const pmr::string& value);
 
 private:
     FBEBuffer& _buffer;
@@ -612,12 +612,12 @@ public:
     // Get the vector as std::set
     void get(std::set<T>& values) const noexcept;
 
-    // Get the vector as std::pmr::vector
-    void get(std::pmr::vector<T>& values) const noexcept;
-    // Get the vector as std::pmr::list
-    void get(std::pmr::list<T>& values) const noexcept;
-    // Get the vector as std::pmr::set
-    void get(std::pmr::set<T>& values) const noexcept;
+    // Get the vector as pmr::vector
+    void get(pmr::vector<T>& values) const noexcept;
+    // Get the vector as pmr::list
+    void get(pmr::list<T>& values) const noexcept;
+    // Get the vector as pmr::set
+    void get(pmr::set<T>& values) const noexcept;
 
     // Set the vector as std::vector
     void set(const std::vector<T>& values) noexcept;
@@ -626,12 +626,12 @@ public:
     // Set the vector as std::set
     void set(const std::set<T>& values) noexcept;
 
-    // Set the vector as std::pmr::vector
-    void set(const std::pmr::vector<T>& values) noexcept;
-    // Set the vector as std::pmr::list
-    void set(const std::pmr::list<T>& values) noexcept;
-    // Set the vector as std::pmr::set
-    void set(const std::pmr::set<T>& values) noexcept;
+    // Set the vector as pmr::vector
+    void set(const pmr::vector<T>& values) noexcept;
+    // Set the vector as pmr::list
+    void set(const pmr::list<T>& values) noexcept;
+    // Set the vector as pmr::set
+    void set(const pmr::set<T>& values) noexcept;
 
 private:
     FBEBuffer& _buffer;
@@ -676,20 +676,20 @@ public:
     // Get the map as std::unordered_map
     void get(std::unordered_map<TKey, TValue>& values) const noexcept;
 
-    // Get the map as std::pmr::map
-    void get(std::pmr::map<TKey, TValue>& values) const noexcept;
-    // Get the map as std::pmr::unordered_map
-    void get(std::pmr::unordered_map<TKey, TValue>& values) const noexcept;
+    // Get the map as pmr::map
+    void get(pmr::map<TKey, TValue>& values) const noexcept;
+    // Get the map as pmr::unordered_map
+    void get(pmr::unordered_map<TKey, TValue>& values) const noexcept;
 
     // Set the map as std::map
     void set(const std::map<TKey, TValue>& values) noexcept;
     // Set the map as std::unordered_map
     void set(const std::unordered_map<TKey, TValue>& values) noexcept;
 
-    // Set the map as std::pmr::map
-    void set(const std::pmr::map<TKey, TValue>& values) noexcept;
-    // Set the map as std::pmr::unordered_map
-    void set(const std::pmr::unordered_map<TKey, TValue>& values) noexcept;
+    // Set the map as pmr::map
+    void set(const pmr::map<TKey, TValue>& values) noexcept;
+    // Set the map as pmr::unordered_map
+    void set(const pmr::unordered_map<TKey, TValue>& values) noexcept;
 
 private:
     FBEBuffer& _buffer;

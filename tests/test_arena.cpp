@@ -49,7 +49,7 @@ class ArenaTest
 
     thread_local static alloc_class* mock;
 
-    static auto mock_alloc(uint64_t size) -> void* { return mock->alloc(size); }
+    static auto mock_alloc(std::size_t size) -> void* { return mock->alloc(size); }
 
     static void mock_dealloc(void* ptr) { return mock->dealloc(ptr); }
 
@@ -238,7 +238,7 @@ TEST_CASE_METHOD(ArenaTest, "Arena (pmr::bytes)", "[ptr-based FBE]") {
     test_fn_with_allocs([](Arena& arena) {
         auto* line2 = arena.Create<::arena_ptr::Line2>();
 
-        std::pmr::vector<uint8_t> bytes_v{{65, 66, 67, 68, 69}, arena.get_memory_resource()};
+        pmr::vector<uint8_t> bytes_v{{65, 66, 67, 68, 69}, arena.get_memory_resource()};
         FBE::pmr_buffer_t buffer(std::move(bytes_v));
         line2->bytes_v = std::move(buffer);
 

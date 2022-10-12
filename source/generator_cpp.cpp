@@ -208,6 +208,12 @@ void GeneratorCpp::GenerateImports()
 #include <vector>
 #if defined(__APPLE__) && (__clang__)
 #include <experimental/memory_resource>
+#include <experimental/vector>
+#include <experimental/list>
+#include <experimental/map>
+#include <experimental/unordered_map>
+#include <experimental/string>
+#include <experimental/set>
 namespace pmr = std::experimental::pmr;
 #else
 #include <memory_resource>
@@ -12064,7 +12070,7 @@ std::string GeneratorCpp::ConvertTypeName(const std::string& package, const Stru
 {
     std::string prefix = "std";
     if (Arena()) {
-        prefix += "::pmr";
+        prefix = "pmr";
     }
     if (field.array)
         return "std::array<" + ConvertTypeName(package, *field.type, field.optional) + ", " + std::to_string(field.N) + ">";

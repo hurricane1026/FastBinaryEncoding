@@ -109,7 +109,7 @@ Expression::Expression([[maybe_unused]] allocator_type alloc)
     , alias_int(alloc)
 {}
 
-Expression::Expression(const std::pmr::vector<stdb::memory::arena_string>& arg_keys, const std::pmr::vector<::arena_common::Alias>& arg_aliases, const std::pmr::map<int32_t, ::arena_common::Alias>& arg_alias_int)
+Expression::Expression(const pmr::vector<stdb::memory::arena_string>& arg_keys, const pmr::vector<::arena_common::Alias>& arg_aliases, const pmr::map<int32_t, ::arena_common::Alias>& arg_alias_int)
     : keys(arg_keys)
     , aliases(arg_aliases)
     , alias_int(arg_alias_int)

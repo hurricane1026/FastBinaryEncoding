@@ -23,7 +23,7 @@ Item::Item([[maybe_unused]] allocator_type alloc)
     , aliases_int(alloc)
 {}
 
-Item::Item(const ::arena_common::Optr& arg_optr, const ::arena_common::Alias& arg_alias, const std::pmr::vector<::arena_common::Expression>& arg_expressions, const std::pmr::map<int32_t, ::arena_common::Alias>& arg_aliases_int)
+Item::Item(const ::arena_common::Optr& arg_optr, const ::arena_common::Alias& arg_alias, const pmr::vector<::arena_common::Expression>& arg_expressions, const pmr::map<int32_t, ::arena_common::Alias>& arg_aliases_int)
     : optr(arg_optr)
     , alias(arg_alias)
     , expressions(arg_expressions)

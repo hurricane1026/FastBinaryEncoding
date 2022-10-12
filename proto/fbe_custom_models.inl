@@ -229,7 +229,7 @@ inline void FieldModelCustomArray<T, TStruct, N>::set(const std::vector<TStruct*
 }
 
 template <typename T, typename TStruct, size_t N>
-inline void FieldModelCustomArray<T, TStruct, N>::get(std::pmr::vector<TStruct>& values) const noexcept
+inline void FieldModelCustomArray<T, TStruct, N>::get(pmr::vector<TStruct>& values) const noexcept
 {
     values.clear();
     values.reserve(N);
@@ -245,7 +245,7 @@ inline void FieldModelCustomArray<T, TStruct, N>::get(std::pmr::vector<TStruct>&
 }
 
 template <typename T, typename TStruct, size_t N>
-inline void FieldModelCustomArray<T, TStruct, N>::get(std::pmr::vector<TStruct*>& values) const noexcept
+inline void FieldModelCustomArray<T, TStruct, N>::get(pmr::vector<TStruct*>& values) const noexcept
 {
     values.clear();
     values.reserve(N);
@@ -261,7 +261,7 @@ inline void FieldModelCustomArray<T, TStruct, N>::get(std::pmr::vector<TStruct*>
 }
 
 template <typename T, typename TStruct, size_t N>
-inline void FieldModelCustomArray<T, TStruct, N>::set(const std::pmr::vector<TStruct>& values) noexcept
+inline void FieldModelCustomArray<T, TStruct, N>::set(const pmr::vector<TStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -276,7 +276,7 @@ inline void FieldModelCustomArray<T, TStruct, N>::set(const std::pmr::vector<TSt
 }
 
 template <typename T, typename TStruct, size_t N>
-inline void FieldModelCustomArray<T, TStruct, N>::set(const std::pmr::vector<TStruct*>& values) noexcept
+inline void FieldModelCustomArray<T, TStruct, N>::set(const pmr::vector<TStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -604,7 +604,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::set<TStruct*>& va
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::vector<TStruct>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::vector<TStruct>& values) const noexcept
 {
     values.clear();
 
@@ -625,7 +625,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::vector<TStruct>& v
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::vector<TStruct*>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::vector<TStruct*>& values) const noexcept
 {
     values.clear();
 
@@ -646,7 +646,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::vector<TStruct*>& 
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::list<TStruct>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::list<TStruct>& values) const noexcept
 {
     values.clear();
 
@@ -665,7 +665,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::list<TStruct>& val
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::list<TStruct*>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::list<TStruct*>& values) const noexcept
 {
     values.clear();
 
@@ -684,7 +684,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::list<TStruct*>& va
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::set<TStruct>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::set<TStruct>& values) const noexcept
 {
     values.clear();
 
@@ -703,7 +703,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::set<TStruct>& valu
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::set<TStruct*>& values) const noexcept
+inline void FieldModelCustomVector<T, TStruct>::get(pmr::set<TStruct*>& values) const noexcept
 {
     values.clear();
 
@@ -722,7 +722,7 @@ inline void FieldModelCustomVector<T, TStruct>::get(std::pmr::set<TStruct*>& val
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::vector<TStruct>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::vector<TStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -737,7 +737,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::vector<TStru
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::vector<TStruct*>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::vector<TStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -752,7 +752,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::vector<TStru
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::list<TStruct>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::list<TStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -767,7 +767,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::list<TStruct
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::list<TStruct*>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::list<TStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -782,7 +782,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::list<TStruct
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::set<TStruct>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::set<TStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -797,7 +797,7 @@ inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::set<TStruct>
 }
 
 template <typename T, typename TStruct>
-inline void FieldModelCustomVector<T, TStruct>::set(const std::pmr::set<TStruct*>& values) noexcept
+inline void FieldModelCustomVector<T, TStruct>::set(const pmr::set<TStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -1083,7 +1083,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::pmr::map<TKStruct, TValueStruct>& values) const noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(pmr::map<TKStruct, TValueStruct>& values) const noexcept
 {
     values.clear();
 
@@ -1105,7 +1105,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::pmr::map<TKStruct, TValueStruct*>& values) const noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(pmr::map<TKStruct, TValueStruct*>& values) const noexcept
 {
     values.clear();
 
@@ -1127,7 +1127,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::pmr::unordered_map<TKStruct, TValueStruct>& values) const noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(pmr::unordered_map<TKStruct, TValueStruct>& values) const noexcept
 {
     values.clear();
 
@@ -1149,7 +1149,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::pmr::unordered_map<TKStruct, TValueStruct*>& values) const noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(pmr::unordered_map<TKStruct, TValueStruct*>& values) const noexcept
 {
     values.clear();
 
@@ -1171,7 +1171,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::get(std::
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const std::pmr::map<TKStruct, TValueStruct>& values) noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const pmr::map<TKStruct, TValueStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -1188,7 +1188,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const std::pmr::map<TKStruct, TValueStruct*>& values) noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const pmr::map<TKStruct, TValueStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -1205,7 +1205,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const std::pmr::unordered_map<TKStruct, TValueStruct>& values) noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const pmr::unordered_map<TKStruct, TValueStruct>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
@@ -1222,7 +1222,7 @@ inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const
 }
 
 template <typename TKey, typename TValue, typename TKStruct, typename TValueStruct>
-inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const std::pmr::unordered_map<TKStruct, TValueStruct*>& values) noexcept
+inline void FieldModelCustomMap<TKey, TValue, TKStruct, TValueStruct>::set(const pmr::unordered_map<TKStruct, TValueStruct*>& values) noexcept
 {
     assert(((_buffer.offset() + fbe_offset() + fbe_size()) <= _buffer.size()) && "Model is broken!");
     if ((_buffer.offset() + fbe_offset() + fbe_size()) > _buffer.size())
